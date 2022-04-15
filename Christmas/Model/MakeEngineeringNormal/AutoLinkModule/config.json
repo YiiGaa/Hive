@@ -1,0 +1,44 @@
+{
+    "isCleanGeneratePath":false,
+    "isNotEmptyGeneratePathError":false,
+    "isBackupWhenNotEmpty":false,
+    "isTargetCover":false,
+    "targetFileName":"{targetFileName}",
+    "selectName":"{selectName}",
+    "filter_Linkpackage":{
+        "startStr":"######Import start######",
+        "endStr":"######Import end######"
+    },
+    "filter_LinkObject":{
+        "startStr":"######LinkObjectImport start######",
+        "endStr":"######LinkObjectImport end######"
+    },
+    "filter_ErrorEnum":{
+        "startStr":"######ErrorCodes enum start######",
+        "endStr":"######ErrorCodes enum end######"
+    },
+    "filter_ErrorCode":{
+        "startStr":"######ErrorCodes start######",
+        "endStr":"######ErrorCodes end######"
+    },
+    "filter_HPP_Head":{
+        "startStr":"/*######HPP Head start######*/",
+        "endStr":"/*######HPP Head end######*/"
+    },
+    "filter_HPP_Tail":{
+        "startStr":"/*######HPP Tail start######*/",
+        "endStr":"/*######HPP Tail end######*/"
+    },
+    "filter_CPP_Head":{
+        "startStr":"/*######CPP Head start######*/",
+        "endStr":"/*######CPP Head end######*/"
+    },
+    "filter_CPP_Tail":{
+        "startStr":"/*######CPP Tail start######*/",
+        "endStr":"/*######CPP Tail end######*/"
+    },
+    "filter_Config":{
+        "startStr":"######Config start######",
+        "endStr":"######Config end######"
+    }
+}

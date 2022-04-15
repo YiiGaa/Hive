@@ -1,0 +1,12 @@
+{
+    "common":{
+        "identity":"f282cce0-c4f8-4235-9d4d-8c4bfdec377c",
+        "hostName":"",
+        "hostIp":"172.17.0.12"
+    },
+    "missionprogress":{
+        "progress_keyname":"mission.bootes.progress",
+        "watchdog_keyname":"altair.watchdog-172.17.0.12",
+        "progress_timer":10
+    }
+}

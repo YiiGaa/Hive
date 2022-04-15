@@ -1,0 +1,36 @@
+{
+    "common":{
+        "identity":"5c70489e-a04e-4186-9e51-93bd0ea69dba",
+        "hostName":"",
+        "hostIp":"192.168.1.100",
+        "endWaitTime":4
+    },
+    "missionget":{
+        "isMain":1,
+        "mesqmission_adress":"127.0.0.1:5672",
+        "mesqmission_user":"guest",
+        "mesqmission_pwd":"guest",
+        "mesqmission_channel":1,
+        "mesqmission_queuename":"hive.mission"
+    },
+    "missionstate":{
+        "mesqstate_adress":"127.0.0.1:5672",
+        "mesqstate_user":"guest",
+        "mesqstate_pwd":"guest",
+        "mesqstate_channel":2,
+        "mesqstate_exchange":"hive",
+        "mesqstate_bindingkey":"hive.state",
+        "mesqstate_queuenamestr":"hive.state.+UUID"
+    },
+    "missionprogress":{
+        "progress_adress":"127.0.0.1:6383",
+        "progress_pwd":"YiiGaa@progress0201!",
+        "watchdog_adress":"127.0.0.1:6383",
+        "watchdog_pwd":"YiiGaa@progress0201!",
+        "progress_keyname":"hive.progress-",
+        "watchdog_keyname":"hive.watchdog-+IP",
+        "progress_timer":2
+    },
+    "taskcenter":{
+    }
+}

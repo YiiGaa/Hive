@@ -1,0 +1,267 @@
+{
+    "allList":{
+        "queuenamestr":"string",
+        "bindingkey":"string",
+
+        "exchangetype":"string",
+        "exchange":"string",
+
+        "routingkey":"string",
+        "sendStr":"json",
+
+        "returnkey":"string"
+    },
+    "taskAssignment":{
+        "#sampleExplain":"testing move communication",
+        "#action":"SENDMESSAGEFORQUEUE",
+        
+        "queuenamestr":"test.mission",
+        "durable":1,
+        "autodelete":0,
+        "exchange":"",
+        "routingkey":"test.mission",
+        "correlationid":"5c70489e-a04e-4186-9e51-93bd0ea69dba",
+        "sendStr":{
+            "responseType":"http",
+            "#responseParam":{
+                "responseUrl":"http://192.168.2.235:8080/testing/test",
+                "httpMethod":"POST"
+            },
+            "target":{
+                "command":"python3 -u /run/mission/sample.py \"{\\\"requestId\\\":\\\"id\\\", \\\"action\\\":{\\\"loop\\\":17}}\" 2>&1",
+                "isErrorContinue":1,
+                "loop":1,
+                "isMarkProgress":0,
+                "interval":1,
+                "progressLength":100
+            }
+        }
+    },"getTask":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19570187",
+        "#action":"CONNECT+DECLAREQUEUE+QOSPREFETCH+GETMESSAGE+ACKMESSAGE+DISCONNECT",
+        
+        "durable":1,
+        "autodelete":0,
+        "noack":0,
+        "queuenamestr":"test1.mission"
+    },
+    "testAllMissionState":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19630147",
+        "#action":"SENDMESSAGEROUTING",
+        
+        "isrpc":0,
+        "exchange":"test",
+        "correlationid":"all",
+        "routingkey":"test.state",
+        "sendStr":{
+            "action":"stop"
+        }
+    },"getAllMissionState":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19630147",
+        "#action":"GETMESSAGEROUTING",
+        
+        "durable":1,
+        "autodelete":1,
+
+        "exchange":"test",
+        "exchangetype":"direct",
+        "bindingkey":"test.state",
+        "queuenamestr":"test.state.5c70489e-a04e-4186-9e51-93bd0ea69dba"
+    },
+    "testSingleMissionState":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19630147",
+        "#action":"SENDMESSAGERPC",
+        
+        "isrpc":0,
+        "exchange":"",
+        "correlationid":"5c70489e-a04e-4186-9e51-93bd0ea69dba",
+        "queuenamestr":"test.state.5c70489e-a04e-4186-9e51-93bd0ea69dba",
+        "routingkey":"test.state.5c70489e-a04e-4186-9e51-93bd0ea69dba",
+        "sendStr":{
+            "action":"start"
+        }
+    },"getSingleMissionState":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19630147",
+        "#action":"GETMESSAGERPC",
+        
+        "durable":1,
+        "autodelete":0,
+
+        "exchange":"",
+        "queuenamestr":"test.state.5c70489e-a04e-4186-9e51-93bd0ea69dba",
+        "sendStr":{
+            "response":"ok"
+        }
+    },
+
+    "exchangeDeclare":{
+        "#sampleExplain":"",
+        "#action":"DECLAREEXCHANGE",
+        
+        "exchange":"test.direct",
+        "exchangetype":"direct"
+    },
+    "queueDeclare":{
+        "#sampleExplain":"",
+        "#action":"DECLAREQUEUE",
+        
+        "exchange":"test.direct",
+        "bindingkey":"test",
+        "queuenamestr":"testing"
+    },
+
+    "sendQueue":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19570187",
+        "#action":"SENDMESSAGEONCE",
+
+        "exchange":"test.direct",
+        "routingkey":"test",
+        "sendStr":{
+            "testing":"ad"
+        }
+    },"getQueue":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19570187",
+        "#action":"GETMESSAGEONCE",
+        
+        "exchange":"test.direct",
+        "bindingkey":"test",
+        "queuenamestr":"testing",
+        "returnkey":"testing"
+
+    },
+
+    "sendJustQueue":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19570187",
+        "#action":"SENDMESSAGEFORQUEUE",
+        
+        "queuenamestr":"hello",
+        "correlationid":"reponse_Rpc",
+        "exchange":"",
+        "routingkey":"hello",
+        "sendStr":{
+            "testing":"ad"
+        }
+    },"getJustQueue":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19570187",
+        "#action":"GETMESSAGEFORQUEUE",
+        
+        "queuenamestr":"hello",
+        "returnkey":"testing"
+    },
+
+    "sendDistribute":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19607841",
+        "#action":"SENDMESSAGEDISTRIBUTE",
+        
+        "queuenamestr":"testingdistribute",
+        "durable":1,
+        "autodelete":0,
+        "exchange":"",
+        "routingkey":"testingdistribute",
+        "sendStr":{
+            "testing":"ad"
+        }
+    },"getDistribute":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19607841",
+        "#action":"GETMESSAGEDISTRIBUTE",
+        
+        "durable":1,
+        "autodelete":0,
+        "noack":0,
+        "queuenamestr":"testingdistribute",
+        "returnkey":"testing"
+    },
+
+    "sendSubscribe":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19617305",
+        "#action":"SENDMESSAGESUBSCRIBE",
+        
+        "exchange":"testingSubscribeExchange",
+        "routingkey":"",
+        "sendStr":{
+            "testing":"ad"
+        }
+    },"getSubscribe":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19617305",
+        "#action":"GETMESSAGESUBSCRIBE",
+        
+        "durable":1,
+        "autodelete":0,
+
+        "exchange":"testingSubscribeExchange",
+        "exchangetype":"fanout",
+        "returnkey":"testing"
+    },
+
+    "sendRouting":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19630147",
+        "#action":"SENDMESSAGEROUTING",
+        
+        "exchange":"testingRoutingExchange",
+        "routingkey":"testingRoutingBindingkey",
+        "sendStr":{
+            "testing":"ad"
+        }
+    },"getRouting":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19630147",
+        "#action":"GETMESSAGEROUTING",
+        
+        "durable":1,
+        "autodelete":1,
+
+        "exchange":"testingRoutingExchange",
+        "exchangetype":"direct",
+        "bindingkey":"testingRoutingBindingkey",
+        "queuenamestr":"testingRouting",
+        "returnkey":"testing"
+    },
+
+    "sendTopic":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19633079",
+        "#action":"SENDMESSAGETOPIC",
+        
+        "exchange":"testingTopicExchange",
+        "routingkey":"abc.testingTopicBindingkey",
+        "sendStr":{
+            "testing":"ad"
+        }
+    },"getTopic":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19633079",
+        "#action":"GETMESSAGETOPIC",
+        
+        "durable":1,
+        "autodelete":0,
+
+        "exchange":"testingTopicExchange",
+        "exchangetype":"topic",
+        "bindingkey":"*.testingTopicBindingkey",
+        "returnkey":"testing"
+    },
+
+    "sendRpc":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19633107",
+        "#action":"SENDMESSAGERPC",
+        
+        "exchange":"",
+        "isrpc":1,
+        "queuenamestr":"testingRpc",
+        "queuenamerpcstr":"reponseRpc",
+        "correlationid":"reponse_Rpc",
+        "routingkey":"testingRpc",
+        "sendStr":{
+            "testing":"ad"
+        }
+    },"getRpc":{
+        "#sampleExplain":"https://blog.csdn.net/anzhsoft/article/details/19633107",
+        "#action":"GETMESSAGERPC",
+        
+        "durable":0,
+        "autodelete":0,
+
+        "queuenamestr":"testingRpc",
+        "sendStr":{
+            "testing":"ad"
+        },
+        "returnkey":"testing"
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "common":{
+        "identity":""
+    },
+    "missionget":{
+        "mesqmission_queuename":"test.mission",
+        "mesqmission_channel":1
+    }
+}

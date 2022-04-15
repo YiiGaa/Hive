@@ -1,0 +1,45 @@
+[
+    {
+        "fileName": "@@.cpp",
+        "path":"/move/@@",
+        "document": {
+            "templ":"CPP",
+            "Module": "@@"
+        }
+    },{
+        "fileName": "@@.hpp",
+        "path":"/move/@@",
+        "document": {
+            "templ":"HPP",
+            "Module": "@@"
+        }
+    },{
+        "fileName": "CMakeLists.txt",
+        "path":"/move/@@/sample",
+        "document": {
+            "templ":"MAKEFILE",
+            "Module": "@@"
+        }
+    },{
+        "fileName": "sample.cpp",
+        "path":"/move/@@/sample",
+        "document": {
+            "templ":"SAMPLE",
+            "Module": "@@"
+        }
+    },{
+        "fileName": "sample.json",
+        "path":"/move/@@/sample",
+        "document": {
+            "templ":"SAMPLEJSON",
+            "Module": "@@"
+        }
+    },{
+        "fileName": "readme.md",
+        "path":"/move/@@/sample",
+        "document": {
+            "templ":"README",
+            "Module": "@@"
+        }
+    }
+]

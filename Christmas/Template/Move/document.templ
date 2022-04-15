@@ -1,0 +1,342 @@
+######HPP######
+#ifndef   _MOVE_@@Module@@_HPP_
+#define   _MOVE_@@Module@@_HPP_ 
+
+#include "kernel/common/errorcode/errorcode.hpp"
+#include "kernel/move/interfaces.hpp"
+#include <string.h>
+#include "kernel/think/think.hpp"
+#include "kernel/common/transferstation/transferstation.hpp"
+
+//lib
+#include <jsoncpp/json/json.h>
+
+/*
+**Please do not modify the following
+######Import start######
+#include "kernel/move/@@Module@@/@@Module@@.hpp"
+######Import end######
+
+######Config start######
+        //@@Module@@
+######Config end######
+
+######LinkObjectImport start######
+        {"@@Module@@", new C@@Module@@()},
+######LinkObjectImport end######
+
+######ErrorCodes enum start######
+        //@@Module@@
+        ERR_THINK_@@Module@@_Exception,
+######ErrorCodes enum end######
+
+######ErrorCodes start######
+        //@@Module@@
+        {ERR_THINK_@@Module@@_Exception, {"E-BT01(@@Module@@)||@@Module@@ 崩溃"}},
+######ErrorCodes end######
+*/
+
+namespace move{
+
+    class C@@Module@@: public CInterfaces{
+        public:
+            typedef struct {
+                //necessary
+
+                //Inner use    
+                    Json::Value passParam;
+                    Json::Value returnParam;
+            } ModuleParam_t;
+
+            ERROR_CODE Start(Json::Value);
+
+        private:
+            ERROR_CODE DoStart(ModuleParam_t*, Json::Value&, Json::Value&);
+            ERROR_CODE XXXXXX(ModuleParam_t*, Json::Value&, Json::Value&, ERROR_CODE);
+            //self function
+
+        private:
+            //self variable
+            
+    };
+
+}
+#endif
+######HPP######
+
+######CPP######
+#include "kernel/move/@@Module@@/@@Module@@.hpp"
+#include "kernel/common/logger/logger.hpp"
+#include "kernel/common/tools/tools.hpp"
+#include <iostream>
+
+//ERROR_CODE move::C@@Module@@::XXXXXX(move::C@@Module@@::ModuleParam_t* moduleParam, Json::Value& passParam, Json::Value& returnParam, ERROR_CODE ret){
+//    //check is error happened at last STEP
+//    if(CErrorCode::isErrorHappened(ret)){
+//        return ret;
+//    }
+//
+//    try{
+//        return ERR_Move_XXXXXX_BLOCK;
+//    } catch (std::exception& e){
+//        return ERR_Move_XXXXXX_EXCEPTION;
+//    }
+//
+//    return ERR_OK;
+//}
+
+ERROR_CODE move::C@@Module@@::DoStart(move::C@@Module@@::ModuleParam_t* moduleParam, Json::Value& passParam, Json::Value& returnParam){
+    ERROR_CODE ret = ERR_OK;
+    
+    //add your self code
+
+    return ret;
+}
+
+ERROR_CODE move::C@@Module@@::Start(Json::Value param){
+    move::C@@Module@@::ModuleParam_t moduleParam;
+    TOOLS_INITSTRUCT(moduleParam);
+
+    moduleParam.passParam = param["common"];
+
+    Json::Value targetParam = param["@@Module@@"];
+
+    //filling param: mesqmission_queuename
+    //std::string mesqmission_queuename;
+    //if(targetParam.isMember("mesqmission_queuename")){
+    //    mesqmission_queuename = targetParam["mesqmission_queuename"].asString();
+    //    moduleParam.mesqmission_queuename = (char*)mesqmission_queuename.c_str();
+    //}
+
+    return this->DoStart(&moduleParam, moduleParam.passParam, moduleParam.returnParam);
+}
+######CPP######
+
+######MAKEFILE######
+cmake_minimum_required(VERSION 3.5)
+
+#the name of Compiled program
+project(sample)
+
+#Header file root directory
+include_directories(${CMAKE_CURRENT_LIST_DIR}/../../../../)
+include_directories(${CMAKE_CURRENT_LIST_DIR}/../../../../kernel/common/lib/include/)
+FILE(GLOB MODULELIB "${CMAKE_SOURCE_DIR}/../../../../kernel/think/*/lib/include/")    #module library
+foreach(v ${MODULELIB})
+    include_directories(${v})
+endforeach()
+
+#lib file root directory
+link_directories(${CMAKE_CURRENT_LIST_DIR}/../lib)
+
+#c++ file root directory
+aux_source_directory(${CMAKE_CURRENT_LIST_DIR}/ sample_src)
+
+FILE(GLOB MOVECPP "${CMAKE_SOURCE_DIR}/../../../move/@@Module@@/*.cpp")    #all move cpp
+FILE(GLOB MODULECPP "${CMAKE_SOURCE_DIR}/../../../think/*/*.cpp")    #all module cpp
+FILE(GLOB COMMONCPP "${CMAKE_SOURCE_DIR}/../../../common/*/*.cpp")    #all common cpp
+FILE(GLOB CONFIGCPP "${CMAKE_SOURCE_DIR}/../../../config/*.cpp")    #all config cpp
+FILE(GLOB THINKLISTCPP "${CMAKE_SOURCE_DIR}/../../../think/think.cpp")    #all thinklist cpp
+#FILE(GLOB MOVELISTCPP "${CMAKE_SOURCE_DIR}/../../../move/move.cpp")    #all movelist cpp
+FILE(GLOB ROOTCPP "${CMAKE_SOURCE_DIR}/*.cpp")    #all target cpp
+
+FILE(GLOB DEVLIB "${CMAKE_SOURCE_DIR}/../../../think/*/devincluce/include.dev")    #all library
+FILE(GLOB DEVCOMMONLIB "${CMAKE_SOURCE_DIR}/../../../common/lib/devincluce/include.dev")    #common library
+
+FILE(GLOB RUNTIME_LIB "${CMAKE_SOURCE_DIR}/../../../think/*/lib/*.a")    #all .a
+FILE(GLOB RUNTIME_CMMONLIB "${CMAKE_SOURCE_DIR}/../../../common/lib/*/*.a")    #all .a
+link_libraries(${RUNTIME_LIB} ${RUNTIME_CMMONLIB})
+
+message("")
+message("********.cpp list start********")
+message("※move:")
+foreach(v ${MOVECPP})
+    message("   ${v}")
+endforeach()
+
+message("")
+message("※configs:")
+foreach(v ${CONFIGCPP})
+    message("   ${v}")
+endforeach()
+
+message("")
+message("※think list:")
+foreach(v ${THINKLISTCPP})
+    message("   ${v}")
+endforeach()
+
+#message("")
+#message("※move list:")
+#foreach(v ${MOVELISTCPP})
+#    message("   ${v}")
+#endforeach()
+
+message("")
+message("※common:")
+foreach(v ${COMMONCPP})
+    message("   ${v}")
+endforeach()
+
+message("")
+message("※modules:")
+foreach(v ${MODULECPP})
+    message("   ${v}")
+endforeach()
+
+message("")
+message("※lib:")
+foreach(v ${RUNTIME_LIB})
+    message("   ${v}")
+endforeach()
+foreach(v ${RUNTIME_CMMONLIB})
+    message("   ${v}")
+endforeach()
+
+message("")
+message("※target root:")
+foreach(v ${ROOTCPP})
+    message("   ${v}")
+endforeach()
+
+#Building dev lib
+set(LINKER_FLAGS "delete head")
+foreach(v ${DEVLIB})
+    FILE(READ ${v} tmp)
+    STRING( REPLACE "\n" " " tmp ${tmp} )
+    set(LINKER_FLAGS "${LINKER_FLAGS} ${tmp}")
+endforeach()
+foreach(v ${DEVCOMMONLIB})
+    FILE(READ ${v} tmp)
+    STRING( REPLACE "\n" " " tmp ${tmp} )
+    set(LINKER_FLAGS "${LINKER_FLAGS} ${tmp}")
+endforeach()
+STRING( REPLACE "delete head " "" LINKER_FLAGS ${LINKER_FLAGS} )
+
+message("")
+message("※dev lib:")
+    message("   ${LINKER_FLAGS}")
+
+message("")
+message("********.cpp list end********")
+message("")
+
+#Building goals
+foreach(v ${ROOTCPP})
+    STRING( REGEX REPLACE "${CMAKE_SOURCE_DIR}/" "" prjName ${v} )
+    STRING( REGEX REPLACE ".cpp" "" prjName ${prjName} )
+    add_executable(${prjName} ${v} ${MOVECPP} ${MODULECPP} ${COMMONCPP} ${CONFIGCPP} ${THINKLISTCPP})
+    target_link_libraries(${prjName} ${LINKER_FLAGS})
+endforeach()
+
+
+set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")             # c++11
+set(CMAKE_CXX_FLAGS "-g ${CMAKE_CXX_FLAGS}")                     # 调试信息
+set(CMAKE_CXX_FLAGS "-Wall ${CMAKE_CXX_FLAGS}")                  # 开启所有警告
+set(CMAKE_CXX_FLAGS "-DDEBUGON ${CMAKE_CXX_FLAGS}")              # 定义debug
+
+set(CMAKE_CXX_FLAGS_DEBUG "-O0 ${CMAKE_CXX_FLAGS}")             # 调试包不优化
+
+######MAKEFILE######
+
+######SAMPLE######
+#include "kernel/move/@@Module@@/@@Module@@.hpp"
+#include "kernel/common/errorcode/errorcode.hpp"
+#include "kernel/common/logger/logger.hpp"
+#include "kernel/common/tools/tools.hpp"
+#include "kernel/move/interfaces.hpp"
+#include <stdio.h>
+#include <map>
+
+/* The same function as "kernel/move/move.hpp" */
+#define START_ACTION(module, moduleParam)  (moveMap[module])->Start(moduleParam)
+std::map<std::string, move::CInterfaces*> moveMap = {
+    {"@@Module@@", new move::C@@Module@@()},   //Need to add "kernel/move/move.cpp" manually
+};
+/* The same function as "kernel/move/move.hpp" */
+
+using namespace move;
+int main(int argc, char *argv[]){
+    if(argc < 1){
+        printf("\n\nplease enter: XXXXXX XXXXXX XXXXXX\n\n\n");
+        return 0;
+    }
+
+    //STEP filling passParam
+    Json::Reader passParamReader;
+    Json::Value targetParam;
+    std::ifstream passParamJson("../sample.json");//open file example.json
+
+    if(!passParamReader.parse(passParamJson, targetParam)){
+        printf("\n\n***Error:missing %s\n\n", "../sample.json");
+        passParamJson.close();
+        return -2;
+    }
+    passParamJson.close();
+
+    //STEP start @@Module@@
+    ERROR_CODE ret = START_ACTION("@@Module@@", targetParam);
+
+    //STEP get errorCode
+    std::cout << "errorCode:" << CErrorCode::getErrorCode(ret) << ",message:" << CErrorCode::getErrorMessage(ret) << std::endl;
+    
+    return 0;
+}
+######SAMPLE######
+
+######SAMPLEJSON######
+{
+    "common":{
+        "identity":""
+    },
+    "@@Module@@":{
+
+    }
+}
+######SAMPLEJSON######
+
+######README######
+# Move模块：@@Module@@
+
+## 简述
+@@Module@@是xxx的模块，主要功能包括
+- 
+
+## 参数说明
+本sample的参数配置在sample.json配置
+
+| 参数               | 必要 | 默认参数 | 类型   | 说明                    |
+| ------------------ | ---- | -------- | ------ | ----------------------- |
+|  |    |          |  |         |
+
+## sample程序编译
+
+编译sample文件，在samle文件加中，如果一个sample程序不够用，可以手动创建一个带有main的cpp文件，此cpp文件也会自动编译。
+
+cmake会自动加载已有的think模块，但其他move模块不会加载。move模块最好是独立的，如果与其他move模块联系，请通过kernel/common/transferstation/transferstation.hpp做联系。
+
+```
+cd kernel/move/@@Module@@/sample
+mkdir build
+cmake ..
+make
+```
+
+## 模拟测试
+
+### 依赖环境
+
+依赖环境：
+
+安装：
+
+### sample程序
+
+sample：
+
+### 结果检验
+
+######README######
+
+######NOTHING######
+######NOTHING######

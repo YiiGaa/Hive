@@ -1,0 +1,16 @@
+{
+    "common":{
+        "identity":""
+    },
+    "taskcenter":{
+
+    },
+    "target":{
+        "command":"ls",
+        "isErrorContinue":1,
+        "loop":100,
+        "isMarkProgress":0,
+        "interval":1,
+        "progressLength":100
+    }
+}

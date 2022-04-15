@@ -1,0 +1,8 @@
+Hive framework v1.0
+A general cloud computing framework
+
+gitHub: https://github.com/YiiGaa/Hive
+official: https://stoprefactoring.com
+Licensed under MIT
+
+---Designed by Daniel.Leung

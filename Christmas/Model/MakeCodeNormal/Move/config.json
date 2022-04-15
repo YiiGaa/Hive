@@ -1,0 +1,8 @@
+{
+    "targetDir":"../kernel",
+    "waitInputParam":"@@",
+    "templ":"templ",
+    "documentPath":{
+        "document":"./Template/Move/document.templ"
+    }
+}

@@ -1,0 +1,361 @@
+######HPP######
+#ifndef   _THINK_@@Module@@_HPP_
+#define   _THINK_@@Module@@_HPP_ 
+
+#include "kernel/common/errorcode/errorcode.hpp"
+#include "kernel/config/config.hpp"
+#include "kernel/think/interface.hpp"
+#include <string.h>
+
+//lib
+
+/*
+**Please do not modify the following
+######Import start######
+#include "kernel/think/@@Module@@/@@Module@@.hpp"
+######Import end######
+
+######Config start######
+        //@@Module@@
+######Config end######
+
+######LinkObjectImport start######
+        {"@@Module@@", new C@@Module@@()},
+######LinkObjectImport end######
+
+######ErrorCodes enum start######
+        //@@Module@@
+        ERR_THINK_@@Module@@_Exception,
+######ErrorCodes enum end######
+
+######ErrorCodes start######
+        //@@Module@@
+        {ERR_THINK_@@Module@@_Exception, {"E-BT01(@@Module@@)||@@Module@@ 崩溃"}},
+######ErrorCodes end######
+*/
+
+
+namespace think{
+
+    class C@@Module@@: public CInterface{
+        public:
+            enum ACTION{
+                NONE = 0,
+            };
+
+            typedef struct {
+                //module param
+            } ModuleParam_t;
+
+            ERROR_CODE Start(int, void*, Json::Value&, Json::Value&);
+
+        private:
+            ERROR_CODE DoStart(ACTION, ModuleParam_t*, Json::Value&, Json::Value&);
+            ERROR_CODE XXXXXX(ModuleParam_t*, Json::Value&, Json::Value&, ERROR_CODE);
+            //selef function
+
+        private:
+            //self variable
+            
+    };
+
+}
+#endif
+######HPP######
+
+######CPP######
+#include "kernel/think/@@Module@@/@@Module@@.hpp"
+#include "kernel/common/logger/logger.hpp"
+#include "kernel/common/tools/tools.hpp"
+#include <iostream>
+
+//ERROR_CODE think::C@@Module@@::XXXXXX(think::C@@Module@@::ModuleParam_t* moduleParam, Json::Value& passParam, Json::Value& returnParam, ERROR_CODE ret){
+//    //check is error happened at last STEP
+//    if(CErrorCode::isErrorHappened(ret)){
+//        return ret;
+//    }
+//
+//    try{
+//        return ERR_THINK_XXXXXX_BLOCK;
+//    } catch (std::exception& e){
+//        ERRORLOGGER(e.what());
+//        return ERR_THINK_XXXXXX_EXCEPTION;
+//    } catch (...){
+//        ERRORLOGGER("unknown exception, maybe Segmentation fault (core dumped)");
+//        return ERR_THINK_XXXXXX_EXCEPTION;
+//    }
+//
+//    return ERR_OK;
+//}
+
+ERROR_CODE think::C@@Module@@::DoStart(think::C@@Module@@::ACTION action, think::C@@Module@@::ModuleParam_t* moduleParam, Json::Value& passParam, Json::Value& returnParam){
+    ERROR_CODE ret = ERR_OK;
+    
+    switch(action){
+        //add your self code
+        case NONE:
+        break;
+    }
+
+    return ret;
+}
+
+ERROR_CODE think::C@@Module@@::Start(int action, void* param, Json::Value& passParam, Json::Value& returnParam){
+    think::C@@Module@@::ModuleParam_t* moduleParam = (think::C@@Module@@::ModuleParam_t*)param;
+    think::C@@Module@@::ACTION actions = (think::C@@Module@@::ACTION)action;
+
+    return this->DoStart(actions, moduleParam, passParam, returnParam);
+}
+######CPP######
+
+######MAKEFILE######
+cmake_minimum_required(VERSION 3.5)
+
+#the name of Compiled program
+project(sample)
+
+#Header file root directory
+include_directories(${CMAKE_CURRENT_LIST_DIR}/../../../../)
+include_directories(${CMAKE_CURRENT_LIST_DIR}/../../../../kernel/common/lib/include/)
+include_directories(${CMAKE_CURRENT_LIST_DIR}/../../../../kernel/think/@@Module@@/lib/include/)
+
+#lib file root directory
+link_directories(${CMAKE_CURRENT_LIST_DIR}/../lib)
+
+#c++ file root directory
+aux_source_directory(${CMAKE_CURRENT_LIST_DIR}/ sample_src)
+
+FILE(GLOB MODULECPP "${CMAKE_SOURCE_DIR}/../../../think/@@Module@@/*.cpp")    #@@Module@@ module cpp
+FILE(GLOB COMMONCPP "${CMAKE_SOURCE_DIR}/../../../common/*/*.cpp")    #all common cpp
+FILE(GLOB CONFIGCPP "${CMAKE_SOURCE_DIR}/../../../config/*.cpp")    #all config cpp
+#FILE(GLOB THINKLISTCPP "${CMAKE_SOURCE_DIR}/../../../think/think.cpp")    #all thinklist cpp
+FILE(GLOB ROOTCPP "${CMAKE_SOURCE_DIR}/*.cpp")    #all target cpp
+
+FILE(GLOB DEVLIB "${CMAKE_SOURCE_DIR}/../../../think/@@Module@@/devincluce/include.dev")    #@@Module@@ library
+FILE(GLOB DEVCOMMONLIB "${CMAKE_SOURCE_DIR}/../../../common/lib/devincluce/include.dev")    #common library
+
+FILE(GLOB RUNTIME_LIB "${CMAKE_SOURCE_DIR}/../../../think/*/lib/*.a")    #all .a
+FILE(GLOB RUNTIME_CMMONLIB "${CMAKE_SOURCE_DIR}/../../../common/lib/*/*.a")    #all .a
+link_libraries(${RUNTIME_LIB} ${RUNTIME_CMMONLIB})
+
+message("")
+message("********.cpp list start********")
+message("※configs:")
+foreach(v ${CONFIGCPP})
+    message("   ${v}")
+endforeach()
+
+message("")
+message("※common:")
+foreach(v ${COMMONCPP})
+    message("   ${v}")
+endforeach()
+
+#message("")
+#message("※think list:")
+#foreach(v ${THINKLISTCPP})
+#    message("   ${v}")
+#endforeach()
+
+message("")
+message("※modules:")
+foreach(v ${MODULECPP})
+    message("   ${v}")
+endforeach()
+
+message("")
+message("※lib:")
+foreach(v ${RUNTIME_LIB})
+    message("   ${v}")
+endforeach()
+foreach(v ${RUNTIME_CMMONLIB})
+    message("   ${v}")
+endforeach()
+
+message("")
+message("※target root:")
+foreach(v ${ROOTCPP})
+    message("   ${v}")
+endforeach()
+
+#Building dev lib
+set(LINKER_FLAGS "delete head")
+foreach(v ${DEVLIB})
+    FILE(READ ${v} tmp)
+    STRING( REPLACE "\n" " " tmp ${tmp} )
+    set(LINKER_FLAGS "${LINKER_FLAGS} ${tmp}")
+endforeach()
+foreach(v ${DEVCOMMONLIB})
+    FILE(READ ${v} tmp)
+    STRING( REPLACE "\n" " " tmp ${tmp} )
+    set(LINKER_FLAGS "${LINKER_FLAGS} ${tmp}")
+endforeach()
+STRING( REPLACE "delete head " "" LINKER_FLAGS ${LINKER_FLAGS} )
+
+message("")
+message("※dev lib:")
+    message("   ${LINKER_FLAGS}")
+
+message("")
+message("********.cpp list end********")
+message("")
+
+#Building goals
+foreach(v ${ROOTCPP})
+    STRING( REGEX REPLACE "${CMAKE_SOURCE_DIR}/" "" prjName ${v} )
+    STRING( REGEX REPLACE ".cpp" "" prjName ${prjName} )
+    add_executable(${prjName} ${v} ${MODULECPP} ${COMMONCPP} ${CONFIGCPP} )
+    target_link_libraries(${prjName} ${LINKER_FLAGS})
+endforeach()
+
+
+set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")             # c++11
+set(CMAKE_CXX_FLAGS "-g ${CMAKE_CXX_FLAGS}")                     # 调试信息
+set(CMAKE_CXX_FLAGS "-Wall ${CMAKE_CXX_FLAGS}")                  # 开启所有警告
+set(CMAKE_CXX_FLAGS "-DDEBUGON ${CMAKE_CXX_FLAGS}")              # 定义debug
+
+set(CMAKE_CXX_FLAGS_DEBUG "-O0 ${CMAKE_CXX_FLAGS}")             # 调试包不优化
+
+######MAKEFILE######
+
+######SAMPLE######
+#include "kernel/think/@@Module@@/@@Module@@.hpp"
+#include "kernel/common/errorcode/errorcode.hpp"
+#include "kernel/common/logger/logger.hpp"
+#include "kernel/common/tools/tools.hpp"
+#include "kernel/think/interface.hpp"
+#include <stdio.h>
+#include <map>
+
+/* The same function as "kernel/think/think.hpp" */
+#define START_MODULE(module, action, moduleParam, passParam, resultParam)  (thinkMap[module])->Start((int)action, (void*)&moduleParam, passParam, resultParam)
+std::map<std::string, think::CInterface*> thinkMap = {
+    {"@@Module@@", new think::C@@Module@@()},    //Need to add "kernel/think/think.cpp" manually
+};
+/* The same function as "kernel/think/think.hpp" */
+
+using namespace think;
+int main(int argc, char *argv[]){
+    Json::Value passParam;
+    Json::Value returnParam;
+
+    if(argc < 1){
+        printf("\n\nplease enter: XXXXXX XXXXXX XXXXXX\n\n\n");
+        return 0;
+    }
+
+    //STEP filling passParam
+    Json::Reader passParamReader;
+    std::ifstream passParamJson("../sample.json");//open file example.json
+
+    if(!passParamReader.parse(passParamJson, passParam)){
+        printf("\n\n***Error:missing ../sample.json\n\n\n");
+        passParamJson.close();
+        return -2;
+    }
+    passParamJson.close();
+
+    //STEP @@Module@@
+    think::C@@Module@@::ModuleParam_t moduleParam_1;
+    TOOLS_INITSTRUCT(moduleParam_1);
+
+    moduleParam_1.XXXXXX = argv[1];
+    moduleParam_1.XXXXXX = argv[2];
+    moduleParam_1.XXXXXX = argv[3];
+
+    ERROR_CODE ret = START_MODULE("@@Module@@", think::C@@Module@@::NONE, moduleParam_1, passParam, returnParam);
+
+    //STEP get errorCode
+    std::cout << "errorCode:" << CErrorCode::getErrorCode(ret) << ",message:" << CErrorCode::getErrorMessage(ret) << std::endl;
+    
+    return 0;
+}
+######SAMPLE######
+
+######PASSPARM######
+{
+    "action":"",
+    "target":{
+        "#":""
+    }
+}
+######PASSPARM######
+
+######DEVINCLUDE######
+# Module Dependency Description
+# sample:
+#   -lcurl
+#       depends:libcurl4-openssl-dev
+# sample description
+#   -lcurl=>the link name. You must write it in "./include.dev",and it will be automatically add When compiled.
+#       depends:libcurl4-openssl-dev=>it means libcurl4-openssl-dev must be installed
+
+
+
+# This file is for illustration only
+# The file "./include.dev" is really useful
+# And you have to write dependencies in file "./include.dev", like follow:
+#   -ljsoncpp
+#   -lpthread
+######DEVINCLUDE######
+
+######README######
+Think模块：@@Module@@
+
+简述
+
+@@Module@@模块操作xx的模块，主要功能包括
+
+- 
+
+moduleParam参数说明
+
+  参数  	必要  	默认参数	类型  	说明  
+      	    	    	    	    
+
+action说明
+
+  值   	必要的moduleParam值	action前提	说明  
+      	               	        	    
+
+依赖库
+
+详情请看kernel/think/@@Module@@/devinclude/install.txt
+
+sample程序说明
+
+- sample.cpp :
+- sample.json:moduleParam相关参数的配置
+
+sample程序编译
+
+编译sample文件，在samle文件加中，如果一个sample程序不够用，可以手动创建一个带有main的cpp文件，此cpp文件也会自动编译。
+
+cmake会自动加载本think模块，但其他think模块不会加载。think模块与其他think模块是独立的。
+
+    cd kernel/think/@@Module@@/sample
+    mkdir build
+    cmake ..
+    make
+
+模拟测试
+
+依赖环境
+
+依赖环境：
+
+安装：
+
+sample程序
+
+sample：
+
+结果检验
+
+- 
+
+
+######README######
+
+######NOTHING######
+######NOTHING######

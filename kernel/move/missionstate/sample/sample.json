@@ -1,0 +1,11 @@
+{
+    "common":{
+        "identity":"123345"
+    },
+    "missionstate":{
+        "mesqstate_channel":2,
+        "mesqstate_exchange":"test",
+        "mesqstate_bindingkey":"test.state",
+        "mesqstate_queuenamestr":"test.state.5c70489e-a04e-4186-9e51-93bd0ea69dba"
+    }
+}

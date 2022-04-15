@@ -1,0 +1,13 @@
+{
+    "action":"normal",
+    "target":{
+        "command":"python3 -u ../sample.py \"{\\\"requestId\\\":\\\"234\\\", \\\"action\\\":{\\\"loop\\\":6}}\"",
+        "23command":"python3 -u ../sample1.py 2>&1",
+        "11command":"ls",
+        "isErrorContinue":1,
+        "isMarkProgress":0,
+        "loop":1,
+        "interval":1,
+        "progressLength":100
+    }
+}

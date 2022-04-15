@@ -1,0 +1,38 @@
+/*######HPP Head start######*/
+#ifndef   _MOVE_HPP_
+#define   _MOVE_HPP_ 
+
+#include <iostream>
+#include <map>
+#include "kernel/move/interfaces.hpp"
+
+/*######HPP Head end######*/
+
+/*######HPP Tail start######*/
+
+#define START_ACTION(module, moduleParam)  (move::CMove::moveMap[module])->Start(moduleParam)
+
+namespace move{
+    using namespace std;
+    class CMove {
+        public:
+            static map<string, CInterfaces*> moveMap;
+    };
+}
+
+#endif
+/*######HPP Tail end######*/
+
+
+
+/*######CPP Head start######*/
+#include "kernel/move/move.hpp"
+
+namespace move{
+    map<string, CInterfaces*> CMove::moveMap = {
+/*######CPP Head end######*/
+
+/*######CPP Tail start######*/
+    };
+}
+/*######CPP Tail end######*/

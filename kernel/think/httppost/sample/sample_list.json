@@ -1,0 +1,7 @@
+{
+    "testing":{
+        "url":"http://192.168.2.235:8080/testing/test",
+        "requestMethod":"POST",
+        "messageBody":"{\"aaa\":\"aaa\"}"
+    }
+}

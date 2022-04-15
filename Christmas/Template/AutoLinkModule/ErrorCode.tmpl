@@ -1,0 +1,65 @@
+/*######HPP Head start######*/
+#ifndef   _ERRORCODE_HPP_
+#define   _ERRORCODE_HPP_
+
+#include <map>
+#include <vector>
+#include <iostream>
+#include "kernel/common/tools/tools.hpp"
+
+enum ERROR_CODE{
+    ERR_OK = 0,
+    ERR_Start = -2147483646,
+
+/*######HPP Head end######*/
+
+/*######HPP Tail start######*/
+};
+
+
+class CErrorCode {
+    public:
+        static int isErrorHappened(ERROR_CODE param);
+        static std::string getErrorCode(ERROR_CODE param);
+        static std::string getErrorMessage(ERROR_CODE param);
+        static std::map<ERROR_CODE, std::string> errorMap;
+};
+
+
+
+
+#endif
+/*######HPP Tail end######*/
+
+
+
+/*######CPP Head start######*/
+#include "kernel/common/errorcode/errorcode.hpp"
+
+std::map<ERROR_CODE, std::string> CErrorCode::errorMap = {
+        //{ERROR_CODE, {"errorCode||message"}}
+        {ERR_OK, {"200||OK"}},
+
+/*######CPP Head end######*/
+
+/*######CPP Tail start######*/
+};
+
+
+int CErrorCode::isErrorHappened(ERROR_CODE param){
+    if(param == ERR_OK){
+        return 0;
+    }
+    return -1; 
+}
+
+std::string CErrorCode::getErrorCode(ERROR_CODE param){
+    std::vector<std::string> result = TOOLS_STRINGSPLIT(CErrorCode::errorMap[param],"||");
+    return result[0];
+}
+
+std::string CErrorCode::getErrorMessage(ERROR_CODE param){
+    std::vector<std::string> result = TOOLS_STRINGSPLIT(CErrorCode::errorMap[param],"||");
+    return result[1];
+}
+/*######CPP Tail end######*/

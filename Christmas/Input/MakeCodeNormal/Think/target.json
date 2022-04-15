@@ -1,0 +1,73 @@
+[
+    {
+        "fileName": "@@.cpp",
+        "path":"/think/@@",
+        "document": {
+            "templ":"CPP",
+            "Module": "@@"
+        }
+    },{
+        "fileName": "@@.hpp",
+        "path":"/think/@@",
+        "document": {
+            "templ":"HPP",
+            "Module": "@@"
+        }
+    },{
+        "fileName": "CMakeLists.txt",
+        "path":"/think/@@/sample",
+        "document": {
+            "templ":"MAKEFILE",
+            "Module": "@@"
+        }
+    },{
+        "fileName": "sample.cpp",
+        "path":"/think/@@/sample",
+        "document": {
+            "templ":"SAMPLE",
+            "Module": "@@"
+        }
+    },{
+        "fileName": "sample.json",
+        "path":"/think/@@/sample",
+        "document": {
+            "templ":"PASSPARM",
+            "Module": "@@"
+        }
+    },{
+        "fileName": "libraryFile",
+        "path":"/think/@@/lib",
+        "document": {
+            "templ":"NOTHING",
+            "Module": "@@"
+        }
+    },{
+        "fileName": "headFile",
+        "path":"/think/@@/lib/include",
+        "document": {
+            "templ":"NOTHING",
+            "Module": "@@"
+        }
+    },{
+        "fileName": "install.txt",
+        "path":"/think/@@/devincluce",
+        "document": {
+            "templ":"DEVINCLUDE",
+            "Module": "@@"
+        }
+    },{
+        "fileName": "include.dev",
+        "path":"/think/@@/devincluce",
+        "document": {
+            "templ":"NOTHING",
+            "Module": "@@"
+        }
+    },{
+        "fileName": "readme.md",
+        "path":"/think/@@/sample",
+        "document": {
+            "templ":"README",
+            "Module": "@@"
+        }
+    }
+]
