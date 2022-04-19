@@ -1,4 +1,4 @@
-<img src="https://github.com/YiiGaa/Trick/blob/master/Prop/Common/Img/logo.png" width="300"/>
+<img src="https://raw.githubusercontents.com/YiiGaa/Trick/master/Prop/Common/Img/logo.png" width="300"/>
 
 Hive是通用型的云计算服务架构，把脚本放进指定目录即可扩展云计算功能。适合各开发语言的云计算脚本。
 
@@ -40,7 +40,7 @@ Hive架构的设计思想是，Hive解决通用的云计算任务下发、任务
 
 云计算服务部分主要是处理一些运行时间较长、逻辑或计算较为复杂的任务，例如：视频转码、直播转码、统计、数据挖掘等。云计算服务部分的通用应用场景如下所示。
 
-![](https://github.com/YiiGaa/Hive/blob/main/design/design2.png) 
+![](https://raw.githubusercontents.com/YiiGaa/Hive/main/design/design2.png) 
 
 以上是简化了的云计算应用场景，实际上，后端应用程序与云计算服务软件是相互独立的，且是多对多的关系。
 
@@ -74,6 +74,6 @@ Hive架构的设计思想是，Hive解决通用的云计算任务下发、任务
 
   > 默认情况下，通过任务脚本的方式能满足大多数场景。如果存在一些特殊场景，需要频繁接收任务变更指令，如接收车辆位置信息描画行程图等，则可以自行对引导程序进行改造，在引导程序内部完成功能。当然，也可联系我们做定制开发。
 
-![](https://github.com/YiiGaa/Hive/blob/main/design/design1.png) 
+![](https://raw.githubusercontents.com/YiiGaa/Hive/main/design/design1.png) 
 
 > 如果单云计算服务器不够需要扩容，则直接添加服务器即可。
