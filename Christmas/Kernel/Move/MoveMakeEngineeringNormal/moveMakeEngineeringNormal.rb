@@ -239,6 +239,15 @@ class CMoveMakeEngineeringNormal
 										controlText = controlText + @ObjThink.start({"action" => "ReadTxt","path" => list_4})
 									end
 								end
+
+								if list_2['replace']
+									tempReplaceTarget = list_2['replace'].clone
+									tempReplaceTarget.each do |tempKey, tempValue|
+										tempValue = tempValue.sub(@Config["selectName"],list_3)
+										tempReplaceTarget[tempKey] = tempValue
+									end
+									controlText = @ObjThink.start({"action" => "DealRegExReplace","temlp"=>controlText,"startStr"=>"","endStr"=>"","substitutionParameter"=>tempReplaceTarget})
+								end
 							end
 							next
 						elsif list_2['contain'].include?@Config["targetFileName"]
@@ -257,6 +266,15 @@ class CMoveMakeEngineeringNormal
 							else 
 								controlText = controlText + @ObjThink.start({"action" => "ReadTxt","path" => list_4})
 							end
+						end
+
+						if list_2['replace']
+							tempReplaceTarget = list_2['replace'].clone
+							tempReplaceTarget.each do |tempKey, tempValue|
+								tempValue = tempValue.sub(@Config["targetFileName"],selectorList[i])
+								tempReplaceTarget[tempKey] = tempValue
+							end
+							controlText = @ObjThink.start({"action" => "DealRegExReplace","temlp"=>controlText,"startStr"=>"","endStr"=>"","substitutionParameter"=>tempReplaceTarget})
 						end
 					end
 

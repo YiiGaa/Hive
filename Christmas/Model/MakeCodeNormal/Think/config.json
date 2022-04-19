@@ -1,6 +1,7 @@
 {
     "targetDir":"../kernel",
     "waitInputParam":"@@",
+    "isJudgeExist":true,
     "templ":"templ",
     "documentPath":{
         "document":"./Template/Think/document.templ"
