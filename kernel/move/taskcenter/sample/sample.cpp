@@ -20,7 +20,7 @@ void *SamplePushMissionThread(void *arg) {
     Json::StyledWriter swriter;
 
     std::cout << "@@mission start: " << swriter.write(targetParam) << std::endl;
-    TRANSFERSTATION_PUSHMISSION("mission id" ,targetParam);
+    TRANSFERSTATION_PUSHMISSION("mission id" ,targetParam, 0);
 
     Json::Value returnResult;
     returnResult = TRANSFERSTATION_POPMISSISON();

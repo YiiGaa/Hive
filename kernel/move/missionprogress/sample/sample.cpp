@@ -19,7 +19,7 @@ std::map<std::string, move::CInterfaces*> moveMap = {
 void *SamplePushmissionThread(void *arg) {
     Json::Value missionParam;
     missionParam["key"] = "testing";
-    TRANSFERSTATION_PUSHMISSION("uuidTesting", missionParam);
+    TRANSFERSTATION_PUSHMISSION("uuidTesting", missionParam, 0);
 }
 
 void *SampleUpdateprogressThread(void *arg) {
