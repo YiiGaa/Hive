@@ -110,19 +110,22 @@ ERROR_CODE think::Chttppost::HttpPost(think::Chttppost::ModuleParam_t* modulePar
             
             res = curl_easy_perform(curl); 
             if (res != CURLE_OK){
-                //return ERR_THINK_HTTPPOST_INIT_BLOCK;
+                return ERR_THINK_HTTPPOST_CONNECT_BLOCK;
             } 
+
+            long response_code = 0;
+            res = curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &response_code);
+            if(res != CURLE_OK || response_code!= 200){
+                return ERR_THINK_HTTPPOST_REQUEST_BLOCK;
+            }
 
             Json::Reader reader;
             if(!returnParam.empty()){
                 returnParam.clear();
             }
             reader.parse(response, returnParam);
-
-            Json::StyledWriter swriter;
-            std::string str =swriter.write(returnParam);
         } else {
-            //return ERR_THINK_HTTPPOST_INIT_BLOCK;
+            return ERR_THINK_HTTPPOST_INIT_EXCEPTION;
         }
         
         curl_easy_cleanup(curl);  // release curl

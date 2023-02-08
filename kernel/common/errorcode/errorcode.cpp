@@ -11,7 +11,9 @@ std::map<ERROR_CODE, std::string> CErrorCode::errorMap = {
         {ERR_THINK_HTTPPOST_INIT_EXCEPTION, {"E-BT01(httppost)||httppost 初始化失败"}},  
         {ERR_THINK_HTTPPOST_CleanUp_EXCEPTION, {"E-BT02(httppost)||httppost 清理崩溃"}},  
         {ERR_THINK_HTTPPOST_POST_EXCEPTION, {"E-BT03(httppost)||httppost Post请求崩溃"}},  
-        {ERR_THINK_HTTPPOST_GET_EXCEPTION, {"E-BT04(httppost)||httppost Get请求崩溃"}},  
+        {ERR_THINK_HTTPPOST_GET_EXCEPTION, {"E-BT04(httppost)||httppost Get请求崩溃"}},
+        {ERR_THINK_HTTPPOST_CONNECT_BLOCK, {"E-BT05(httppost)||httppost 链接失败"}}, 
+        {ERR_THINK_HTTPPOST_REQUEST_BLOCK, {"E-BT06(httppost)||httppost 请求失败"}},    
         //rabbitMq
         {ERR_THINK_RABBITMQ_BLOCK, {"E-BT01(rabbitmq)||rabbitMq模块错误"}},
         {ERR_THINK_RABBITMQ_CREATECONNECT_BLOCK, {"E-BT02(rabbitmq)||rabbitMq连接创建失败"}},

@@ -28,6 +28,8 @@
         ERR_THINK_HTTPPOST_CleanUp_EXCEPTION,
         ERR_THINK_HTTPPOST_POST_EXCEPTION,
         ERR_THINK_HTTPPOST_GET_EXCEPTION,
+        ERR_THINK_HTTPPOST_CONNECT_BLOCK,
+        ERR_THINK_HTTPPOST_REQUEST_BLOCK,
 ######ErrorCodes enum end######
 
 ######ErrorCodes start######
@@ -35,7 +37,9 @@
         {ERR_THINK_HTTPPOST_INIT_EXCEPTION, {"E-BT01(httppost)||httppost 初始化失败"}},  
         {ERR_THINK_HTTPPOST_CleanUp_EXCEPTION, {"E-BT02(httppost)||httppost 清理崩溃"}},  
         {ERR_THINK_HTTPPOST_POST_EXCEPTION, {"E-BT03(httppost)||httppost Post请求崩溃"}},  
-        {ERR_THINK_HTTPPOST_GET_EXCEPTION, {"E-BT04(httppost)||httppost Get请求崩溃"}},  
+        {ERR_THINK_HTTPPOST_GET_EXCEPTION, {"E-BT04(httppost)||httppost Get请求崩溃"}},
+        {ERR_THINK_HTTPPOST_CONNECT_BLOCK, {"E-BT05(httppost)||httppost 链接失败"}}, 
+        {ERR_THINK_HTTPPOST_REQUEST_BLOCK, {"E-BT06(httppost)||httppost 请求失败"}},    
 ######ErrorCodes end######
 */
 
