@@ -300,25 +300,29 @@ int main(int argc, char *argv[]){
 ######DEVINCLUDE######
 
 ######README######
-Think模块：@@Module@@
+# Think模块：@@Module@@
 
-简述
+## 简述
 
 @@Module@@模块操作xx的模块，主要功能包括
 
 - 
 
-moduleParam参数说明
+## moduleParam参数说明
 
-  参数  	必要  	默认参数	类型  	说明  
+| 参数  | 必要 | 默认参数 | 类型   | 说明                   |
+| ----- | ---- | -------- | ------ | ---------------------- |
+|  |    |          |  |  |
       	    	    	    	    
 
-action说明
+## action说明
 
-  值   	必要的moduleParam值	action前提	说明  
+| 值                        | 必要的moduleParam值 | action前提             | 说明                         |
+| ------------------------- | ------------------- | ---------------------- | ---------------------------- |
+|     |                     |                        |                    |
       	               	        	    
 
-依赖库
+## 依赖库
 
 详情请看kernel/think/@@Module@@/devinclude/install.txt
 
@@ -327,30 +331,30 @@ sample程序说明
 - sample.cpp :
 - sample.json:moduleParam相关参数的配置
 
-sample程序编译
+## sample程序编译
 
 编译sample文件，在samle文件加中，如果一个sample程序不够用，可以手动创建一个带有main的cpp文件，此cpp文件也会自动编译。
 
 cmake会自动加载本think模块，但其他think模块不会加载。think模块与其他think模块是独立的。
-
+```
     cd kernel/think/@@Module@@/sample
     mkdir build
     cmake ..
     make
+```
+## 模拟测试
 
-模拟测试
-
-依赖环境
+### 依赖环境
 
 依赖环境：
 
-安装：
+### 安装：
 
 sample程序
 
 sample：
 
-结果检验
+### 结果检验
 
 - 
 
