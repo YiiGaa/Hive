@@ -8,8 +8,8 @@
 ######Config start######
         //logger
         #define LOGGERHEAD "worker"
-        #define CONFIG_LOGGERROOT_WORKER "/log/worker/worker/"
-        #define CONFIG_LOGGERROOT_MISSION "/log/worker/mission/"
+        #define CONFIG_LOGGERROOT_WORKER "/var/log/hive/worker/"
+        #define CONFIG_LOGGERROOT_MISSION "/var/log/hive/mission/"
 ######Config end######
 */
 
@@ -20,13 +20,15 @@
     #define LOGGER(logger) common::CLogger::Logger(1,logger,__FILE__,__FUNCTION__,__LINE__)
     #define LOGGERMISSIONSHELL(logger) common::CLogger::Logger(0,logger,__FILE__,__FUNCTION__,__LINE__)
     #define LOGGERMISSION(logger) common::CLogger::Logger(0,logger,__FILE__,__FUNCTION__,__LINE__)
-    #define ERRORLOGGER(logger) common::CLogger::ErrorLogger(logger,__FILE__,__FUNCTION__,__LINE__)
+    #define ERRORLOGGERMISSION(logger) common::CLogger::ErrorLogger(0,logger,__FILE__,__FUNCTION__,__LINE__)
+    #define ERRORLOGGER(logger) common::CLogger::ErrorLogger(1,logger,__FILE__,__FUNCTION__,__LINE__)
     #define DEBUGLOGGER(logger) common::CLogger::DebugLogger(logger,__FILE__,__FUNCTION__,__LINE__)
     #define CLEARLOGGER() common::CLogger::ClearLogger()
 #else
     #define LOGGER(logger) common::CLogger::LoggerFile(1,0,logger,__FILE__,__FUNCTION__,__LINE__)
     #define LOGGERMISSIONSHELL(logger) common::CLogger::StraightLog(logger)
     #define LOGGERMISSION(logger) common::CLogger::LoggerFile(0,0,logger,__FILE__,__FUNCTION__,__LINE__)
+    #define ERRORLOGGERMISSION(logger) common::CLogger::LoggerFile(0,1,logger,__FILE__,__FUNCTION__,__LINE__)
     #define ERRORLOGGER(logger) common::CLogger::LoggerFile(1,1,logger,__FILE__,__FUNCTION__,__LINE__)
     #define DEBUGLOGGER(logger) common::CLogger::FakeLogger(logger)
     #define CLEARLOGGER() common::CLogger::ClearLogger()
@@ -44,7 +46,7 @@ namespace common{
             static void FakeLogger(std::string);
 
             static void Logger(int, std::string, std::string, std::string, int);
-            static void ErrorLogger(std::string, std::string, std::string, int);
+            static void ErrorLogger(int, std::string, std::string, std::string, int);
             static void DebugLogger(std::string, std::string, std::string, int);
             
         public:    //inner use

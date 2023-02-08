@@ -122,8 +122,12 @@ void common::CLogger::Logger(int isWorker, std::string logger, std::string file,
     return; 
 }
 
-void common::CLogger::ErrorLogger(std::string logger, std::string file, std::string function, int line){
-    std::cout << LOGGERHEAD << " ERROR:" << logger << "," << file << "," << function << "()," << line << std::endl;
+void common::CLogger::ErrorLogger(int isWorker, std::string logger, std::string file, std::string function, int line){
+    if(isWorker){
+        std::cout << LOGGERHEAD << "Worker ERROR:" << logger << "," << file << "," << function << "()," << line << std::endl;
+    }else {
+        std::cout << LOGGERHEAD << "Mission ERROR:" << logger << "," << file << "," << function << "()," << line << std::endl;
+    }
     return; 
 }
 
