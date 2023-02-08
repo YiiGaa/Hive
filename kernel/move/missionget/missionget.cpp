@@ -151,10 +151,10 @@ ERROR_CODE move::Cmissionget::ListenMission(move::Cmissionget::ModuleParam_t* mo
             LOGGER("missionget@report accept method:"+httpMethod);
             LOGGER("missionget@report accept message:"+responseStr);
 
-            //retry 3 time, 1s interval
-            int retryTime = 3;
+            //retry 30 time, 5s interval
+            int retryTime = 30;
             while(retryTime>0 && CErrorCode::isErrorHappened(START_MODULE("httppost", think::Chttppost::NONE, *moduleParam_2, passParam, tempReturnParam))){
-                sleep(1);
+                sleep(6);
                 retryTime--;
             }
             if(retryTime <= 0){
@@ -249,10 +249,10 @@ ERROR_CODE move::Cmissionget::ReportingResult(move::Cmissionget::ModuleParam_t* 
             LOGGER("missionget@report result method:"+httpMethod);
             LOGGER("missionget@report result message:"+responseStr);
 
-            //retry 3 time, 1s interval
-            int retryTime = 3;
+            //retry 30 time, 5s interval
+            int retryTime = 30;
             while(retryTime>0 && CErrorCode::isErrorHappened(START_MODULE("httppost", think::Chttppost::NONE, *moduleParam_2, passParam, returnParam))){
-                sleep(1);
+                sleep(6);
                 retryTime--;
             }
             if(retryTime <= 0){
