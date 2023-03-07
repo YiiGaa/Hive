@@ -93,6 +93,8 @@ if __name__ == '__main__':
         connect = RedisCluster(startup_nodes=LinkNode, password=config['statePoolPassword'])
 
     while True:
+        time.sleep(config['intervalTime'])
+
         tempRemoveList = []
         cpuRateSum = 0.0
         memoryRateSum = 0.0
@@ -239,5 +241,3 @@ if __name__ == '__main__':
         except Exception as e:
             logger.error('unknow except,', exc_info=True)
             #logger.warning(traceback.print_exc())
-
-        time.sleep(config['intervalTime'])
